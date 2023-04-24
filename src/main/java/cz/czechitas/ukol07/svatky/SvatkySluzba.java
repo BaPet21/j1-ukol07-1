@@ -21,7 +21,6 @@ public class SvatkySluzba {
     private final SeznamSvatku seznamSvatku;
 
     public SvatkySluzba() throws IOException {
-        // TODO načíst seznam svátků ze souboru svatky.json
 
         seznamSvatku = objectMapper.readValue(cestaKDatum.toFile(),SeznamSvatku.class);
     }
@@ -35,7 +34,7 @@ public class SvatkySluzba {
         return seznamSvatku.getSvatky().stream()
          .filter(svatek -> svatek.getDen().equals(day))
                 .map(Svatek::getJmeno).toList();
-        
+
     }
 }
 
