@@ -31,21 +31,11 @@ public class SvatkySluzba {
     }
 
     public List<String> vyhledatSvatkyKeDni(MonthDay day) {
-        // TODO
-        // získat seznam svátků
-        // převést na Stream
-        Stream<Svatek> streamSvatku = seznamSvatku.getSvatky().stream();
-        // pomocí metody filter() vybrat jen ty, které odpovídají zadanému dni (porovnat MonthDay pomocí metodyequals())
-        streamSvatku.filter(svatek -> svatek.getDen().equals(day));
 
-        // pomocí metody map() získat z objektu jméno
-        streamSvatku.map(Svatek::getJmeno);
-
-        // pomocí toList() převést na List
-        streamSvatku.collect(Collectors.toList());
-        return List.of();
-
-
+        return seznamSvatku.getSvatky().stream()
+         .filter(svatek -> svatek.getDen().equals(day))
+                .map(Svatek::getJmeno).toList();
+        
     }
 }
 
